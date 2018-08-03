@@ -1,0 +1,122 @@
+@main-color: #e0bd62;
+// app-part
+h3 {
+    font-size: 1.17em;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration-line: none;
+}
+.container{
+    display: auto;
+    padding: 10px 20px;
+}
+
+/* Archive-tags */
+
+@hr-color: #d9d9d9;
+@default-color: #b3b3b3;
+@choose-color: #d5a52a;
+.modules {
+    border-top: solid 1px @hr-color;
+    padding-bottom: 20px;
+    a {
+        border-bottom: 1;
+    }
+    h4 {
+        padding: 10px 0;
+        font-weight: 600;
+        a {
+            color: @default-color;
+            &:hover {
+                color: @choose-color;
+                border-bottom: 0px;
+            }
+        }
+    }
+    .Archive-tags-item {
+        p {
+            display: inline-block;
+            padding: 2px 5px;
+            .tag {
+                border: solid 1px @default-color;
+                color: @default-color;
+                padding: 5px 10px;
+                border-radius: 15px;
+            }
+            .tag:hover {
+                border: solid 1px @choose-color;
+                color: @choose-color;
+            }
+        }
+    }
+    .about-me {
+        .avatar {
+            width: 100%;
+            padding-bottom: 100%;
+            overflow: hidden;
+            background-image: url(http://wx3.sinaimg.cn/mw690/6d659ba0ly8fdqq6w68v9j20ro0ro778.jpg);
+            background-size: 100%;
+        }
+        .self-intor {
+            color: @default-color;
+            padding: 10px 0;
+        }
+    }
+}
+
+// archive
+.archive {
+}
+
+.search {
+    // width: 50%;
+}
+@media screen and (min-width: 992px){
+    .isFixed {
+        position: fixed;
+        background-color: #Fff;
+        top: 0;
+        z-index: 999;
+        width: 19%;
+    }
+}
+
+.nav-pills>li{
+    a{
+        color: @choose-color;
+    }  
+}
+.nav-pills>li.active>a{
+    color: #ffffff;
+    background-color: @choose-color;
+    &:focus,&:hover{
+        background-color: @choose-color;
+    }
+}
+
+.article {
+    &:first-child {
+        .article-type {
+            padding-top: 0;
+        }
+    }
+    .article-type {
+        font-size: 25px;
+        color: @main-color;
+        padding-top: 20px;
+    }
+    .article-item {
+        border-bottom: solid 1px @hr-color;
+        .article-title {
+            font-size: 20px;
+        }
+    }
+}
+// element
+.el-menu{
+
+}
