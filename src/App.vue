@@ -3,8 +3,9 @@
         <head-nav/>
         <div class="container">
           <router-view/>
+          <footNav></footNav>
         </div>
-        <footNav></footNav>
+        
   </div>
 </template>
 
