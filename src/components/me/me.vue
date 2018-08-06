@@ -9,43 +9,58 @@
             <div class="intro" v-html="info.introduction"></div>
             <contact/>
         </div>
-        <div class="content">
+        <el-row :gutter="10"  class="content">
+          <el-col :xs="24" :sm="12">
             <div class="my-info">
                 <h4>个人信息</h4>
-                <div>Age:{{info.age}}</div>
-                <div>Email:{{info.email}}</div>
-                <div>University:{{info.university}}</div>
-                <div>Major:{{info.major}}</div>
+                <div><span>Age:</span>{{info.age}}</div>
+                <div><span>Email:</span>{{info.email}}</div>
+                <div><span>University:</span>{{info.university}}</div>
+                <div><span>Major:</span>{{info.major}}</div>
             </div>
+          </el-col>
+          <el-col :xs="24" :sm="12">
             <div class="my-skill">
                 <h4>个人技能</h4>
-                <div class="skill" v-for="skill">
-                    <span>{{skill.name}}</span>
-                    <el-progress :text-inside="true" :stroke-width="18" :percentage="skill.percent" color="rgba(142, 113, 199, 0.7)"></el-progress>
+                <div class="skill" v-for="(skill,skillIndex) in skills" :key="skillIndex">
+                    <span class="name">{{skill.name}}</span>
+                    <el-progress :text-inside="true" :stroke-width="20" :percentage="skill.percent" color="#e0bd62"></el-progress>
+                    <span class="dsc">{{skill.describe}}</span>
                 </div>
             </div>
-        </div>
+          </el-col>
+        </el-row>    
     </div>
 </template>
 <script>
-import contact from '../comment/contact'
+import contact from "../comment/contact";
 
 export default {
   data() {
     return {
-      info: {}
+      info: {},
+      skills: []
     };
   },
-  components:{
-      contact
+  components: {
+    contact
   },
   mounted() {
     var _this = this;
     this.$ajax
-      .get("http://120.78.235.137/myInfo.php")
+      .get("http://120.78.235.137/JunBlog-php/myInfo.php")
       .then(function(response) {
         console.log(response.data);
         _this.info = response.data;
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
+    this.$ajax
+      .get("http://120.78.235.137/JunBlog-php/mySkill.php")
+      .then(function(response) {
+        console.log(response.data);
+        _this.skills = response.data;
       })
       .catch(function(response) {
         console.log(response);
@@ -54,13 +69,13 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@choose-color: #d5a52a;
+@choose-color: #e0bd62;
 * {
   text-align: center;
 }
 .me {
   .head {
-      padding-bottom: 20px;
+    padding-bottom: 20px;
     h3 {
       color: #808080;
       padding-bottom: 20px;
@@ -74,7 +89,7 @@ export default {
         padding-bottom: 100%;
         border-radius: 50px;
         overflow: hidden;
-        background-image: url(http://wx3.sinaimg.cn/mw690/6d659ba0ly8fdqq6w68v9j20ro0ro778.jpg);
+        background-image: url(http://120.78.235.137/images/avatar.jpg);
         background-size: 100%;
       }
     }
@@ -84,34 +99,56 @@ export default {
         color: @choose-color;
       }
     }
-    .intro{
-        padding-bottom: 10px;
+    .intro {
+      padding-bottom: 10px;
     }
   }
   .content {
-    display: flex;
     .my-info {
-      flex: 1;
       padding: 10px 20px;
       * {
         text-align: left;
         padding-bottom: 10px;
       }
-      h4{
+      h4 {
         text-align: center;
         padding-bottom: 20px;
+      }
+      span {
+        color: #707070;
+        padding-right: 10px;
       }
     }
     .my-skill {
-      flex: 1;
       padding: 10px 20px;
       * {
         text-align: left;
         padding-bottom: 10px;
       }
-      h4{
+      h4 {
         text-align: center;
         padding-bottom: 20px;
+      }
+      .skill {
+        .name {
+          padding-right: 10px;
+          &::after {
+            content: ":";
+          }
+        }
+        .el-progress {
+          width: 200px;
+          display: inline-block;
+        }
+        @media screen and(max-width: 447px) {
+          .el-progress {
+            width: 130px;
+          }
+        }
+        .dsc {
+          color: #707070;
+          font-size: 14px;
+        }
       }
     }
   }

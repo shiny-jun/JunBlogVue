@@ -1,6 +1,6 @@
 <template>
     <el-row>
-        <el-col :xs="24" :md="18">
+        <el-col :xs="24" :sm="18">
             <div class="post-preview" v-for="(post,index) in posts" :key="index">
                 <post-view :post="post"/>
             </div>

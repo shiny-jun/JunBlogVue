@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home/home'
 import photoes from '@/components/photoes/photoes'
+import foods from '@/components/foods/foods'
 import archive from '@/components/archive/archive'
 import me from '@/components/me/me'
 
@@ -17,6 +18,10 @@ export default new Router({
       path: '/photoes',
       name: 'photoes',
       component: photoes
+    },{
+      path: '/foods',
+      name: 'foods',
+      component: foods
     },{
       path: '/archive',
       name: 'archive',
