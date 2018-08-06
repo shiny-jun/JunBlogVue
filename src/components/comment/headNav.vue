@@ -4,6 +4,7 @@
         <el-menu-item index="/"><router-link :to="'/'">Home</router-link></el-menu-item>
         <el-menu-item index="/archive"><router-link :to="'/archive'">Archive</router-link> </el-menu-item>
         <el-menu-item index="/photoes"><router-link :to="'/photoes'">Photoes</router-link></el-menu-item>
+        <el-menu-item index="/photoes"><router-link :to="'/photoes'">Foods Share</router-link></el-menu-item>
         <el-menu-item index="/me"><router-link :to="'/me'">About me</router-link></el-menu-item>
       </el-menu>
     </div>

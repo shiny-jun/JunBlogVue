@@ -28,8 +28,6 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'jquery': 'jquery',
-      'bootstrap':resolve('node_modules/bootstrap')
     },
   },
   module: {
@@ -71,22 +69,12 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      },{
-        test: require.resolve('jquery'),
-        use: [{
-          loader: 'expose-loader',
-          options: '$'
-        }]
       }
     ],
   },
   
 plugins: [
-  new webpack.ProvidePlugin({
-    $:"jquery",
-    jQuery:"jquery",
-    "windows.jQuery":"jquery"
-  })
+  
 ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
