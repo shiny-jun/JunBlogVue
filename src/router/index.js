@@ -32,12 +32,5 @@ export default new Router({
       component: me
     }
   ],
-  mode: 'hash',
-　scrollBehavior(to, from, savedPosition) {
-　　　if (to.hash) {
-　　　　　return {
-　　　　　　　selector: to.hash
-　　　　　}
-　　　}
-  }
+  mode: 'hash'
 })

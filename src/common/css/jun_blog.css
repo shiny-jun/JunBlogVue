@@ -51,7 +51,7 @@ a {
   width: 100%;
   padding-bottom: 100%;
   overflow: hidden;
-  background-image: url(http://wx3.sinaimg.cn/mw690/6d659ba0ly8fdqq6w68v9j20ro0ro778.jpg);
+  background-image: url(http://120.78.235.137/images/avatar.jpg);
   background-size: 100%;
 }
 .modules .about-me .self-intor {
@@ -64,19 +64,11 @@ a {
     background-color: #Fff;
     top: 0;
     z-index: 999;
-    width: 19%;
+    width: 100%;
   }
 }
-.nav-pills > li a {
-  color: #d5a52a;
-}
-.nav-pills > li.active > a {
-  color: #ffffff;
-  background-color: #d5a52a;
-}
-.nav-pills > li.active > a:focus,
-.nav-pills > li.active > a:hover {
-  background-color: #d5a52a;
+.tag {
+  padding: 20px 10px;
 }
 .article:first-child .article-type {
   padding-top: 0;
@@ -92,6 +84,6 @@ a {
 .article .article-item .article-title {
   font-size: 20px;
 }
-.el-menu-demo {
-  text-align: right;
+.right {
+  float: right;
 }

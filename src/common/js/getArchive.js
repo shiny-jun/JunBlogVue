@@ -1,0 +1,4 @@
+function getAllArchives(){
+    getCategoryList.php
+    
+}

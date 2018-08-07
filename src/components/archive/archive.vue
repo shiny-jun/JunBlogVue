@@ -1,88 +1,59 @@
 <template>
-    <div class="archive">
-        <div class="col-xs-12 col-md-3" id="searchBar">
-            <ul class="nav nav-pills nav-stacked search" :class="searchBarFixed == true ? 'isFixed' :''">
-                <li role="presentation" :class="activeName===allArticle.type?'active':''" v-for="(allArticle,index) in allArticles" :key="index">
-                    <a :href="'#'+allArticle.type" @click="changeActive(allArticle.type)">
-                        {{allArticle.type}}
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-xs-12 col-md-9">
-            <div class="article" v-for="(allArticle,index) in allArticles" :key="index">
-                <div class="article-type">
-                    <span class="glyphicon glyphicon-bookmark" :id="allArticle.type"></span>
-                    {{allArticle.type}}
-                </div>
-                <div class="article-item" v-for="(article,index2) in allArticle.articles" :key="index2">
-                    <h2 class="article-title">
-                        {{article.title}}
-                    </h2>
-                    <h3 class="article-detail">
-                        {{article.detail}}
-                    </h3>
-                </div>
+    <div class="archive" id="searchBar">
+          <div class="tag" :class="searchBarFixed == true ? 'isFixed' :''">
+            <el-tag type="warning" v-for="(allArticle,index) in allArticles" :key="index">
+              <a href="javascript:void(0)" rel="external nofollow" @click="goAnchor('#anchor-'+allArticle.category_nametype)">
+                {{allArticle.category_name}}
+              </a>
+            </el-tag>
+          </div>
+          <div class="article" v-for="(allArticle,index) in allArticles" :key="index">
+            <div class="article-type">
+              <span class="item" :id="'anchor-'+allArticle.category_name"></span>
+                {{allArticle.category_name}}
             </div>
-        </div>
+              <div class="article-item" v-for="(article,index2) in allArticle.archives" :key="index2">
+                <h2 class="article-title">
+                  {{article.title}}
+                </h2>
+                <h3 class="article-detail">
+                  {{article.bloginfo}}
+                </h3>
+                <div>
+                  {{article.createtime}}
+                </div>
+                <div>
+                  已读：{{article.readtime}}
+                </div>
+              </div>
+          </div>
     </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      allArticles: [
-        {
-          type: "JavaScript",
-          articles: [
-            {
-              title: "JavaScript可以获取浏览器提供的很多对象，并进行操作",
-              detail: "window对象不但充当全局作用域，而且表示浏览器窗口。"
-            },
-            {
-              title: "JavaScript可以获取浏览器提供的很多对象，并进行操作",
-              detail: "window对象不但充当全局作用域，而且表示浏览器窗口。"
-            },
-            {
-              title: "JavaScript可以获取浏览器提供的很多对象，并进行操作",
-              detail: "window对象不但充当全局作用域，而且表示浏览器窗口。"
-            },
-            {
-              title: "JavaScript可以获取浏览器提供的很多对象，并进行操作",
-              detail: "window对象不但充当全局作用域，而且表示浏览器窗口。"
-            },
-            {
-              title: "JavaScript可以获取浏览器提供的很多对象，并进行操作",
-              detail: "window对象不但充当全局作用域，而且表示浏览器窗口。"
-            },
-            {
-              title: "JavaScript可以获取浏览器提供的很多对象，并进行操作",
-              detail: "window对象不但充当全局作用域，而且表示浏览器窗口。"
-            },
-            {
-              title: "JavaScript可以获取浏览器提供的很多对象，并进行操作",
-              detail: "window对象不但充当全局作用域，而且表示浏览器窗口。"
-            }
-          ]
-        },
-        {
-          type: "html",
-          articles: [
-            {
-              title: "JavaScript可以获取浏览器提供的很多对象，并进行操作",
-              detail: "window对象不但充当全局作用域，而且表示浏览器窗口。"
-            }
-          ]
-        }
-      ],
-      searchBarFixed: false,
-      activeName:''
+      allArticles: [],
+      searchBarFixed: false
     };
   },
   mounted() {
     //监听到顶部的距离
-    window.addEventListener("scroll", this.handleScroll);
-    this.activeName = this.allArticles[0].type;
+    
+    // getCategoryList
+    var _this = this;
+    this.$ajax
+      .get("http://120.78.235.137/JunBlog-php/getCategoryList.php")
+      .then(function(response) {
+        console.log(response.data);
+        _this.allArticles = response.data;
+        window.addEventListener("scroll", this.handleScroll);
+        this.activeName = this.allArticles[0].category_name;
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
+      
   },
   methods: {
     handleScroll() {
@@ -98,9 +69,10 @@ export default {
         this.searchBarFixed = false;
       }
     },
-    changeActive(type) {
-        console.log(type)
-        this.activeName = type;
+    goAnchor(selector) {
+      var anchor = this.$el.querySelector(selector);
+      console.log(anchor.offsetTop)
+      document.documentElement.scrollTop = anchor.offsetTop-50;
     }
   },
   destroyed() {
@@ -109,4 +81,19 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.item {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: top;
+}
+.el-tag{
+  margin-left: 10px;
+  &:first-child{
+    margin-left: 0px;
+  }
+  a{
+    color: #e6a23c;
+  }
+}
 </style>
