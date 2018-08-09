@@ -13,6 +13,7 @@
                 {{allArticle.category_name}}
             </div>
               <div class="article-item" v-for="(article,index2) in allArticle.archives" :key="index2">
+                <router-link :to = "{name:'archiveDetail',params:{archiveId:article.content_id}}">
                 <h2 class="article-title">
                   {{article.title}}
                 </h2>
@@ -25,6 +26,7 @@
                 <div>
                   已读：{{article.readtime}}
                 </div>
+                </router-link>
               </div>
           </div>
     </div>
@@ -39,7 +41,7 @@ export default {
   },
   mounted() {
     //监听到顶部的距离
-    
+
     // getCategoryList
     var _this = this;
     this.$ajax
@@ -53,7 +55,6 @@ export default {
       .catch(function(response) {
         console.log(response);
       });
-      
   },
   methods: {
     handleScroll() {
@@ -71,8 +72,8 @@ export default {
     },
     goAnchor(selector) {
       var anchor = this.$el.querySelector(selector);
-      console.log(anchor.offsetTop)
-      document.documentElement.scrollTop = anchor.offsetTop-50;
+      console.log(anchor.offsetTop);
+      document.documentElement.scrollTop = anchor.offsetTop - 50;
     }
   },
   destroyed() {
@@ -87,12 +88,12 @@ export default {
   line-height: 50px;
   text-align: top;
 }
-.el-tag{
+.el-tag {
   margin-left: 10px;
-  &:first-child{
+  &:first-child {
     margin-left: 0px;
   }
-  a{
+  a {
     color: #e6a23c;
   }
 }

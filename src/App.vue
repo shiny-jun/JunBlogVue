@@ -1,9 +1,12 @@
 <template>
   <div class="banner-body">
-        <head-nav/>
-        <div class="container">
-          <router-view/>
-          <footNav></footNav>
+        <head-nav/><div class="container">
+        <transition name="fade" mode="out-in">
+          
+            <router-view/></transition>
+            <footNav></footNav>
+          
+        
         </div>
         
   </div>
@@ -30,7 +33,7 @@ export default {
 
 <style lang="less">
 @import './common/css/jun_blog.less';
-
+@import './common/css/transition.less';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -4,6 +4,7 @@ import home from '@/components/home/home'
 import photoes from '@/components/photoes/photoes'
 import foods from '@/components/foods/foods'
 import archive from '@/components/archive/archive'
+import archiveDetail from '@/components/archive/archiveDetail'
 import me from '@/components/me/me'
 
 Vue.use(Router)
@@ -30,6 +31,10 @@ export default new Router({
       path: '/me',
       name: 'me',
       component: me
+    },{
+      path: '/archiveDetail/:archiveId',
+      name: 'archiveDetail',
+      component: archiveDetail
     }
   ],
   mode: 'hash'
