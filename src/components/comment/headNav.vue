@@ -28,7 +28,8 @@ export default {
       if(showNav){
         
       }
-    }
+    },
+
   }
 };
 </script>

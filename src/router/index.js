@@ -32,7 +32,7 @@ export default new Router({
       name: 'me',
       component: me
     },{
-      path: '/archiveDetail/:archiveId',
+      path: '/archiveDetail/:contentId',
       name: 'archiveDetail',
       component: archiveDetail
     }

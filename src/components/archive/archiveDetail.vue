@@ -11,13 +11,28 @@
     </div>
 </template>
 <script>
+import qs from 'qs';
+
 export default {
   data() {
-    return {
-    }    
+    return {};
   },
-  mounted () {
-     console.log(this.$route.params) 
+  mounted() {
+    var contentId=parseInt(this.$route.params.contentId);
+    console.log(contentId)
+    this.$axios({
+      method: "post",
+      url: "http://120.78.235.137/JunBlog-php/archiveDetail.php",
+      data: qs.stringify({
+        contentId: contentId
+      })
+    })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
   }
 };
 </script>

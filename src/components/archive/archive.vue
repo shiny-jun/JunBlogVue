@@ -13,7 +13,7 @@
                 {{allArticle.category_name}}
             </div>
               <div class="article-item" v-for="(article,index2) in allArticle.archives" :key="index2">
-                <router-link :to = "{name:'archiveDetail',params:{archiveId:article.content_id}}">
+                <router-link :to = "{path:'/archiveDetail',name:'archiveDetail',params:{contentId:article.content_id}}">
                 <h2 class="article-title">
                   {{article.title}}
                 </h2>
@@ -44,7 +44,7 @@ export default {
 
     // getCategoryList
     var _this = this;
-    this.$ajax
+    this.$axios
       .get("http://120.78.235.137/JunBlog-php/getCategoryList.php")
       .then(function(response) {
         console.log(response.data);
@@ -95,6 +95,20 @@ export default {
   }
   a {
     color: #e6a23c;
+  }
+}
+.article-item{
+  a{
+    .article-title{
+      color: #000000;
+    }
+    color: #888888;
+    &:hover{
+      .article-title{
+        color: #e6a23c;
+      }
+      color: #e6a23c;
+    }
   }
 }
 </style>

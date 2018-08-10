@@ -1,12 +1,16 @@
 <template>
   <div class="banner-body">
-        <head-nav/><div class="container">
-        <transition name="fade" mode="out-in">
-          
-            <router-view/></transition>
-            <footNav></footNav>
-          
-        
+        <head-nav></head-nav>
+        <div class="container">
+        <transition name="fade" mode="out-in">         
+            <router-view/>
+            </transition>
+
+        <transition name="fade" mode="out-in">         
+
+            <footNav v-show="show"></footNav>    
+            </transition>
+
         </div>
         
   </div>
@@ -18,16 +22,28 @@ import headNav from '@/components/comment/headNav'
  
 export default {
   name: 'App',
+  data(){
+    return{
+      show : true,
+      path:this.$route.path
+    }
+  },
   components: {
     footNav,headNav
   },
   created () {
+  },
+  methods:{
+  },
+  watch:{
+    '$route':function(){
+      console.log(this.path)
+      this.show = !this.show;
+      setTimeout(() => {
+      this.show = !this.show;
+      }, 100);
+    }
   }
-  // methods:{
-  //   wmuSlider(){
-  //     $('.example1').wmuSlider();
-  //   }
-  // }
 }
 </script>
 

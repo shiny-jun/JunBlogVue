@@ -46,8 +46,9 @@ export default {
     contact
   },
   mounted() {
+    
     var _this = this;
-    this.$ajax
+    this.$axios
       .get("http://120.78.235.137/JunBlog-php/myInfo.php")
       .then(function(response) {
         console.log(response.data);
@@ -56,7 +57,7 @@ export default {
       .catch(function(response) {
         console.log(response);
       });
-    this.$ajax
+    this.$axios
       .get("http://120.78.235.137/JunBlog-php/mySkill.php")
       .then(function(response) {
         console.log(response.data);
