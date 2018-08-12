@@ -15,6 +15,8 @@
     "less": "^3.7.1",
     "less-loader": "^4.1.0",
     "vue": "^2.5.2",
+    "highlight.js":"^9.11.0",
+    "vue-highlight.js": "^2.2.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -30,6 +32,7 @@
     "chalk": "^2.0.1",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.11",
+    "element-theme-chalk": "^2.4.6",
     "expose-loader": "^0.7.5",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",

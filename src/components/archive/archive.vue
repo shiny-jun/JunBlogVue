@@ -1,5 +1,5 @@
 <template>
-    <div class="archive" id="searchBar">
+    <div class="archive" id="searchBar" v-loading="loading">
           <div class="tag" :class="searchBarFixed == true ? 'isFixed' :''">
             <el-tag type="warning" v-for="(allArticle,index) in allArticles" :key="index">
               <a href="javascript:void(0)" rel="external nofollow" @click="goAnchor('#anchor-'+allArticle.category_nametype)">
@@ -36,7 +36,8 @@ export default {
   data() {
     return {
       allArticles: [],
-      searchBarFixed: false
+      searchBarFixed: false,
+      loading:true
     };
   },
   mounted() {
@@ -47,10 +48,12 @@ export default {
     this.$axios
       .get("http://120.78.235.137/JunBlog-php/getCategoryList.php")
       .then(function(response) {
+        _this.loading = false;
+        console.log(_this.loading)
         console.log(response.data);
         _this.allArticles = response.data;
-        window.addEventListener("scroll", this.handleScroll);
-        this.activeName = this.allArticles[0].category_name;
+        window.addEventListener("scroll", _this.handleScroll);
+        _this.activeName = _this.allArticles[0].category_name;
       })
       .catch(function(response) {
         console.log(response);

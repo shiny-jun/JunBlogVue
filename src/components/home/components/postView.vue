@@ -38,4 +38,5 @@ export default {
 blockquote{
     margin: 0;
 }
+
 </style>

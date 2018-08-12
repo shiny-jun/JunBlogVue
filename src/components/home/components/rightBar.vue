@@ -1,6 +1,10 @@
 <template>
     <div class="right-bar">
         <div class="modules">
+            <h4><router-link :to="'/archive'">Photoes</router-link></h4>
+            <carousel></carousel>
+        </div>
+        <div class="modules">
             <h4><router-link :to="'/archive'">Archive Tags</router-link></h4>
             <div class="Archive-tags-item">
                 <p v-for="(tag,index) in tags" :key="index"><el-tag type="warning">{{tag.name}}</el-tag></p>
@@ -19,6 +23,7 @@
 
 <script>
 import contact from '@/components/comment/contact';
+import carousel from "./carousel";
 
 export default {
   name: 'home',
@@ -43,7 +48,7 @@ export default {
     }
   },
   components:{
-      contact
+      contact,carousel
   }
 }
 </script>

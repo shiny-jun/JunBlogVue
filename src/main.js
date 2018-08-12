@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+// 代码高亮插件
+import VueHighlightJS from 'vue-highlight.js';
+import 'highlight.js/styles/default.css';
+Vue.use(VueHighlightJS);
 import axios from 'axios';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Vue.prototype.$axios = axios
