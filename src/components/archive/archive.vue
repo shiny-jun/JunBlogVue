@@ -2,15 +2,16 @@
     <div class="archive" id="searchBar" v-loading="loading">
           <div class="tag" :class="searchBarFixed == true ? 'isFixed' :''">
             <el-tag type="warning" v-for="(allArticle,index) in allArticles" :key="index">
-              <a href="javascript:void(0)" rel="external nofollow" @click="goAnchor('#anchor-'+allArticle.category_nametype)">
+              <a href="javascript:void(0)" rel="external nofollow" @click="goAnchor('#anchor-'+allArticle.category_name)">
                 {{allArticle.category_name}}
               </a>
             </el-tag>
           </div>
           <div class="article" v-for="(allArticle,index) in allArticles" :key="index">
             <div class="article-type">
-              <span class="item" :id="'anchor-'+allArticle.category_name"></span>
+              <span class="item" :id="'anchor-'+allArticle.category_name">
                 {{allArticle.category_name}}
+              </span>
             </div>
               <div class="article-item" v-for="(article,index2) in allArticle.archives" :key="index2">
                 <router-link :to = "{path:'/archiveDetail',name:'archiveDetail',params:{contentId:article.content_id}}">

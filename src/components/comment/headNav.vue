@@ -1,6 +1,6 @@
 <template>
     <div class="head-nav">
-      <nav>
+      <nav :class="showNavCss">
         <ul>
           <h2 class="logo">SHiny-Jun</h2>
           <li class="mobile" @click="changeShowNav"><i class="el-icon-menu"></i></li>
@@ -18,18 +18,20 @@ export default {
   data() {
     return {
       activeIndex: this.$route.path,
-      showNav:false
+      showNav: false,
+      showNavCss:''
     };
   },
   mounted() {},
   methods: {
-    changeShowNav(){
-      showNav = !showNav
-      if(showNav){
-        
+    changeShowNav() {
+      this.showNav = !this.showNav;
+      if (this.showNav) {
+        this.showNavCss = 'showNavCss';
+      } else {
+        this.showNavCss = 'researchNavCss';
       }
-    },
-
+    }
   }
 };
 </script>
@@ -105,19 +107,108 @@ nav {
   }
 }
 @media screen and (max-width: 767px) {
-  .el-icon-menu{
-      padding: 20px;
+  .el-icon-menu {
+    padding: 20px;
   }
-  nav{
+  nav {
     height: 64px;
     overflow: hidden;
-    ul{
+    ul {
       li {
         display: block;
       }
+      .mobile{
+        // display: block;        
+      }
     }
   }
-  
+  // 移动端导航下拉动画
+  .showNavCss {
+    animation: showNav 0.5s;
+    -moz-animation: showNav  0.5s; /* Firefox */
+    -webkit-animation: showNav  0.5s; /* Safari 和 Chrome */
+    -o-animation: showNav  0.5s; /* Opera */
+    animation-fill-mode: forwards;
+  }
+  @keyframes showNav {
+    0% {
+      height: 64px;
+    }
+    100% {
+      height: 360px;
+    }
+  }
+
+  @-moz-keyframes showNav /* Firefox */ {
+    0% {
+      height: 64px;
+    }
+    100% {
+      height: 184px;
+    }
+  }
+
+  @-webkit-keyframes showNav /* Safari 和 Chrome */ {
+    0% {
+      height: 64px;
+    }
+    100% {
+      height: 184px;
+    }
+  }
+
+  @-o-keyframes showNav /* Opera */ {
+    0% {
+      height: 64px;
+    }
+    100% {
+      height: 184px;
+    }
+  }
+  // 移动端导航收缩
+  .researchNavCss {
+    animation: researchNav 0.5s;
+    -moz-animation: researchNav  0.5s; /* Firefox */
+    -webkit-animation: researchNav  0.5s; /* Safari 和 Chrome */
+    -o-animation: researchNav  0.5s; /* Opera */
+    animation-fill-mode: forwards;
+  }
+  @keyframes researchNav {
+    0% {
+      height: 360px;
+    }
+    100% {
+      height: 64px;
+    }
+  }
+
+  @-moz-keyframes researchNav /* Firefox */ {
+    0% {
+      height: 360px;
+    }
+    100% {
+      height: 64px;
+    }
+  }
+
+  @-webkit-keyframes researchNav /* Safari 和 Chrome */ {
+    0% {
+      height: 360px;
+    }
+    100% {
+      height: 64px;
+    }
+  }
+
+  @-o-keyframes researchNav /* Opera */ {
+    0% {
+      height: 360px;
+    }
+    100% {
+      height: 64px;
+    }
+  }
+
 }
 </style>
 

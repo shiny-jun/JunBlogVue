@@ -1,7 +1,7 @@
 <template>
     <div class="right-bar">
         <div class="modules">
-            <h4><router-link :to="'/archive'">Photoes</router-link></h4>
+            <h4><router-link :to="'/photoes'">Photoes</router-link></h4>
             <carousel></carousel>
         </div>
         <div class="modules">
