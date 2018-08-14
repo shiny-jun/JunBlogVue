@@ -37,7 +37,6 @@ export default {
   },
   watch:{
     '$route':function(){
-      console.log(this.path)
       this.show = !this.show;
       setTimeout(() => {
       this.show = !this.show;

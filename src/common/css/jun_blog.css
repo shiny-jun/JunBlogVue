@@ -58,14 +58,12 @@ a {
   color: #b3b3b3;
   padding: 10px 0;
 }
-@media screen and (min-width: 992px) {
-  .isFixed {
-    position: fixed;
-    background-color: #Fff;
-    top: 0;
-    z-index: 999;
-    width: 100%;
-  }
+.isFixed {
+  position: fixed;
+  background-color: #Fff;
+  top: 0;
+  z-index: 999;
+  width: 100%;
 }
 .tag {
   padding: 20px 10px;
@@ -86,4 +84,21 @@ a {
 }
 .right {
   float: right;
+}
+blockquote {
+  display: block;
+  padding: 16px 16px 16px;
+  margin: 0 0 24px;
+  border-left: 8px solid #DDDFE4;
+  background: #EEF0F4;
+  overflow: auto;
+  overflow-scrolling: touch;
+  word-wrap: normal;
+  word-break: normal;
+}
+.content p {
+  padding: 10px 0;
+}
+.content img {
+  vertical-align: middle;
 }

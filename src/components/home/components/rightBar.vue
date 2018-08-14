@@ -7,7 +7,11 @@
         <div class="modules">
             <h4><router-link :to="'/archive'">Archive Tags</router-link></h4>
             <div class="Archive-tags-item">
-                <p v-for="(tag,index) in tags" :key="index"><el-tag type="warning">{{tag.name}}</el-tag></p>
+                <p v-for="(tag,index) in tags" :key="index">
+                    <router-link :to="{path:'/archive', query:{category_name:tag.category_name}}">
+                        <el-tag type="warning">{{tag.category_name}}</el-tag>
+                    </router-link>
+                </p>
             </div>
         </div>
         <div class="modules">
@@ -30,25 +34,22 @@ export default {
   props: ['post'],
   data () {
     return{
-        tags:[{
-            name:'javaScript'
-        },{
-            name:'html'
-        },{
-            name:'css'
-        },{
-            name:'vue'
-        },{
-            name:'es6',
-        },{
-            name:'jquery',
-        },{
-            name:'bootstrap'
-        }]
+        tags:[]
     }
   },
   components:{
       contact,carousel
+  },
+  mounted() {
+    var _this = this;
+    this.$axios
+      .get("http://120.78.235.137/JunBlog-php/getCategoryList.php")
+      .then(function(response) {
+        _this.tags = response.data;
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
   }
 }
 </script>

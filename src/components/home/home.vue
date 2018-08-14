@@ -3,9 +3,7 @@
         <el-col :xs="24" :sm="18">
           <div class="block">
           </div>
-            <div class="post-preview" v-for="(post,index) in posts" :key="index">
-                <post-view :post="post"/>
-            </div>
+            <post-view />
         </el-col>
         <el-col :xs="24" :sm="6">
             <right-bar/>
@@ -20,25 +18,13 @@ export default {
   name: "home",
   data() {
     return {
-      posts: [
-        {
-          title: "Hey,欢迎来到我的世界！",
-          subtitle: "Hey,Wellcome to my world!",
-          content:
-            "test test",
-          author: "shiny_jun",
-          date: "2018.07.26"
-        }
-      ]
     };
   },
   components: {
     postView,
     rightBar,
   },
-  mounted() {
-    
-  }
+  
 };
 </script>
 

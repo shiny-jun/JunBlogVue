@@ -17,6 +17,7 @@
 </template>
 <script>
 import qs from "qs";
+import {getDate} from "@/common/js/util.js";
 
 export default {
   data() {
@@ -27,19 +28,6 @@ export default {
     };
   },
   methods: {
-    getDate(time) {
-      var dt = new Date(time);
-      var year = dt.getFullYear();
-      var month = dt.getMonth() + 1;
-      var date = dt.getDate();
-      if (month < 10) {
-        month = "0" + month;
-      }
-      if (date < 10) {
-        date = "0" + date;
-      }
-      return `${year}-${month}-${date}`;
-    },
     routerback: function() {
       this.$router.back(-1);
     }
@@ -55,7 +43,7 @@ export default {
     })
       .then(res => {
         console.log(this);
-        var createtime = this.getDate(res.data.createtime);
+        var createtime = getDate(res.data.createtime);
         res.data.createtime = createtime;
         this.archive = res.data;
         this.loading = false;

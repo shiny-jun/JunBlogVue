@@ -1,42 +1,91 @@
 <template>
     <div class="">
+      <div class="post-preview" v-for="(post,index) in posts" :key="index">
         <el-row :gutter="10">
             <el-col :xs="0" :sm="2" >
-                <a href="#">
-                    <img style="width:100%;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNjQ5MjdkNDI1MSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE2NDkyN2Q0MjUxIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxNCIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" alt="image">
+                <a href="#" class="logo">
+                    <img style="width:100%;" :src="post.logoImg" alt="image">
                 </a>
             </el-col>
             <el-col :xs="24" :sm="22">
-                <blockquote>
-                    <h2 class="media-heading">{{ post.title }}</h2>
-                    <footer>{{ post.subtitle }}</footer>
-                </blockquote>
-                {{ post.content }}
+              <router-link class="archive" :to = "{path:'/archiveDetail',name:'archiveDetail',params:{contentId:post.content_id}}">
+                <h3 class="media-heading">{{ post.title }}</h3>
+                <!-- <footer>{{ post.subtitle }}</footer> -->
+                {{ post.info }}
                 <p class="post-meta">
-                    Posted by {{ post.author }}on {{ post.date }}
+                    Posted by shiny-jun on {{ post.createtime }}
                 </p> 
+              </router-link>
             </el-col>
         </el-row>
+      </div>
     </div>
 </template>
 
 <script>
-
+import { getDate, getLogoImg } from "@/common/js/util.js";
 export default {
-  name: 'home',
-  props: ['post'],
-  data () {
-    return{
-        
-    }
+  name: "home",
+  data() {
+    return {
+      posts: []
+    };
   },
-}
+  mounted() {
+    var _this = this;
+    this.$axios
+      .get("http://120.78.235.137/JunBlog-php/homeArchive.php")
+      .then(function(response) {
+        let len = response.data.length;
+        for (let i = 0; i < len; i++) {
+          let createtime = getDate(response.data[i].createtime);
+          let logoImg = getLogoImg(response.data[i].category_id);
+          response.data[i].createtime = createtime;
+          response.data[i].logoImg = logoImg;
+        }
+        _this.posts = response.data;
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-blockquote{
-    margin: 0;
+blockquote {
+  margin: 0;
 }
-
+.post-preview {
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+h3 {
+  padding: 5px 0 20px;
+}
+.logo {
+  filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+  -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+  opacity: 0.5; /*其他，透明度50%*/
+  transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s; /* Firefox 4 */
+  -webkit-transition: opacity 0.5s; /* Safari and Chrome */
+  -o-transition: opacity 0.5s; /* Opera */
+}
+.logo:hover {
+  filter: alpha(opacity=100); /*IE滤镜，透明度50%*/
+  -moz-opacity: 1; /*Firefox私有，透明度50%*/
+  opacity: 1; /*其他，透明度50%*/
+}
+.archive {
+    color: #000000;
+    &:hover{
+      .article-title{
+        color: #e6a23c;
+      }
+      color: #e6a23c;
+    }
+}
 </style>

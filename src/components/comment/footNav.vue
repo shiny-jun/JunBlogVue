@@ -35,5 +35,6 @@ export default {
 @import '../../common/css/style.css';
 .footer{
 	margin-bottom: 30px;
+	overflow: hidden;
 }
 </style>

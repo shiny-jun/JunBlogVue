@@ -2,7 +2,7 @@
     <div class="archive" id="searchBar" v-loading="loading">
           <div class="tag" :class="searchBarFixed == true ? 'isFixed' :''">
             <el-tag type="warning" v-for="(allArticle,index) in allArticles" :key="index">
-              <a href="javascript:void(0)" rel="external nofollow" @click="goAnchor('#anchor-'+allArticle.category_name)">
+              <a id="category" href="javascript:void(0)" rel="external nofollow" @click="goAnchor('#anchor-'+allArticle.category_name)">
                 {{allArticle.category_name}}
               </a>
             </el-tag>
@@ -38,27 +38,30 @@ export default {
     return {
       allArticles: [],
       searchBarFixed: false,
-      loading:true
+      loading: true
     };
   },
   mounted() {
-    //监听到顶部的距离
-
     // getCategoryList
     var _this = this;
     this.$axios
-      .get("http://120.78.235.137/JunBlog-php/getCategoryList.php")
+      .get("http://120.78.235.137/JunBlog-php/allArchivesList.php")
       .then(function(response) {
         _this.loading = false;
-        console.log(_this.loading)
-        console.log(response.data);
         _this.allArticles = response.data;
-        window.addEventListener("scroll", _this.handleScroll);
-        _this.activeName = _this.allArticles[0].category_name;
+        
       })
       .catch(function(response) {
         console.log(response);
       });
+    window.addEventListener("scroll", _this.handleScroll);//监听到顶部的距离
+    // 判断是否带锚链接点击进来的
+    if (this.$route.query.category_name) {
+      let category_name = this.$route.query.category_name;
+      // console.log(category_name)
+      // document.querySelector('#anchor-'+category_name).scrollIntoView(true)
+      this.goAnchor('#anchor-'+category_name)
+    }
   },
   methods: {
     handleScroll() {
@@ -74,10 +77,14 @@ export default {
         this.searchBarFixed = false;
       }
     },
+    // 锚链接
     goAnchor(selector) {
+      var category = document.getElementById("category");
+      console.log(selector);
+      console.log(this.$el)
       var anchor = this.$el.querySelector(selector);
-      console.log(anchor.offsetTop);
-      document.documentElement.scrollTop = anchor.offsetTop - 50;
+      console.log(anchor);
+      document.documentElement.scrollTop = anchor.offsetTop - 100;
     }
   },
   destroyed() {
@@ -101,14 +108,14 @@ export default {
     color: #e6a23c;
   }
 }
-.article-item{
-  a{
-    .article-title{
+.article-item {
+  a {
+    .article-title {
       color: #000000;
     }
     color: #888888;
-    &:hover{
-      .article-title{
+    &:hover {
+      .article-title {
         color: #e6a23c;
       }
       color: #e6a23c;
