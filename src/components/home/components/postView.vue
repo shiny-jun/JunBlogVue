@@ -85,13 +85,16 @@ h3 {
       color: #000000;
     }
     &:hover{
-      .article-title{
+      .article-title,.article-detail{
         color: #e6a23c;
       }
       color: #e6a23c;
     }
     .article-detail{
       padding: 10px;
+      &::after{
+        content: '…'
+      }
     }
     .post-meta{
       font-size: 13px;

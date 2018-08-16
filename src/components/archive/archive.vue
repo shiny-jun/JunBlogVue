@@ -122,6 +122,9 @@ export default {
     }
     .article-detail{
       padding: 10px;
+      &::after{
+        content: '…'
+      }
     }
     .article-info{
       font-size: 13px;

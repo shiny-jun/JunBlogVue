@@ -102,3 +102,6 @@ blockquote {
 .content img {
   vertical-align: middle;
 }
+.content ul {
+  list-style-type: circle;
+}

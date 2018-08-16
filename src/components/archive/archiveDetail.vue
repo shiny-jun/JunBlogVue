@@ -93,6 +93,9 @@ export default {
   .content {
     margin: 20px;
     overflow: auto;
+    ul{
+      list-style-type: circle;
+    }
   }
 }
 
