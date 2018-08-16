@@ -18,14 +18,11 @@
                 <h2 class="article-title">
                   {{article.title}}
                 </h2>
-                <h3 class="article-detail">
+                <p class="article-detail">
                   {{article.bloginfo}}
-                </h3>
-                <div>
-                  {{article.createtime}}
-                </div>
-                <div>
-                  已读：{{article.readtime}}
+                </p>
+                <div class="article-info">
+                  {{article.createtime}}&nbsp;&nbsp;已读：{{article.readtime}}
                 </div>
                 </router-link>
               </div>
@@ -33,6 +30,8 @@
     </div>
 </template>
 <script>
+import {getDate} from "@/common/js/util.js";
+
 export default {
   data() {
     return {
@@ -110,7 +109,8 @@ export default {
 }
 .article-item {
   a {
-    .article-title {
+    .article-title, .article-detail{
+      padding-top: 30px;
       color: #000000;
     }
     color: #888888;
@@ -119,6 +119,13 @@ export default {
         color: #e6a23c;
       }
       color: #e6a23c;
+    }
+    .article-detail{
+      padding: 10px;
+    }
+    .article-info{
+      font-size: 13px;
+      padding-bottom: 10px;
     }
   }
 }

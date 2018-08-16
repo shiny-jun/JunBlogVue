@@ -9,9 +9,9 @@
             </el-col>
             <el-col :xs="24" :sm="22">
               <router-link class="archive" :to = "{path:'/archiveDetail',name:'archiveDetail',params:{contentId:post.content_id}}">
-                <h3 class="media-heading">{{ post.title }}</h3>
+                <h3 class="article-title">{{ post.title }}</h3>
                 <!-- <footer>{{ post.subtitle }}</footer> -->
-                {{ post.info }}
+                <p class="article-detail">{{ post.bloginfo }}</p>
                 <p class="post-meta">
                     Posted by shiny-jun on {{ post.createtime }}
                 </p> 
@@ -80,12 +80,21 @@ h3 {
   opacity: 1; /*其他，透明度50%*/
 }
 .archive {
-    color: #000000;
+    color: #888888;
+    .article-title,.article-detail{
+      color: #000000;
+    }
     &:hover{
       .article-title{
         color: #e6a23c;
       }
       color: #e6a23c;
+    }
+    .article-detail{
+      padding: 10px;
+    }
+    .post-meta{
+      font-size: 13px;
     }
 }
 </style>
