@@ -1,7 +1,7 @@
 # junblog
 
 >个人blog，努力搭建中...    
->点击查看->[junBlog](http://shiny-jun.cn)
+>点击查看->[junBlog](http://shiny-jun.cn)   
 
 ## 技术介绍
 
