@@ -7,8 +7,8 @@
 
 * 前端
 
-使用vue.cli脚手架工具搭建vue项目,webpack配置为默认配置。\<br>
-内部使用大量的element-ui组件，并使用其提供的布局，做了PC端和移动端响应式布局。\<br>
+使用vue.cli脚手架工具搭建vue项目,webpack配置为默认配置。</br>
+内部使用大量的element-ui组件，并使用其提供的布局，做了PC端和移动端响应式布局。     
 使用less预处理。\<br>
 利用vue官方推荐的axios获取后端提供的数据。\<br>
 使用vue-router控制路由情况
