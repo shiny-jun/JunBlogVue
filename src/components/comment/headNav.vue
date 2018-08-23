@@ -56,10 +56,10 @@ nav {
     // position: relative;
     background-color: #e0bd62;
     text-align: right;
-    // height: 64px;
+    height: 64px;
     .logo {
       float: left;
-      height: 100%;
+      height: 64px;
       line-height: 64px;
       color: #eeddaf;
       padding-left: 20px;
@@ -114,6 +114,7 @@ nav {
     height: 64px;
     overflow: hidden;
     ul {
+      height: auto;
       li {
         display: block;
       }

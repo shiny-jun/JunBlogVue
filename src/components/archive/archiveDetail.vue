@@ -1,13 +1,5 @@
 <template>
     <div class="archive-detail" v-loading="loading">
-        <!-- <el-row :gutter="40">
-        <el-col :xs="24" :sm="18">
-            {{ $route.params }}
-        </el-col>
-        <el-col :xs="0" :sm="4">
-            nav
-        </el-col>
-        </el-row> -->
         <div class="back" @click="routerback"><i class="el-icon-arrow-left"></i>back</div>
         <h3>{{archive.title}}</h3>
         <p>创建时间:<span>{{archive.createtime}}</span></p>
@@ -95,6 +87,7 @@ export default {
     overflow: auto;
     ul{
       list-style-type: circle;
+      
     }
   }
 }

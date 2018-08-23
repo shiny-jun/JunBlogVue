@@ -74,7 +74,6 @@ a {
 }
 
 // archive
-@media screen and (min-width: 992px) {}
 
 .isFixed {
     position: fixed;
@@ -126,13 +125,36 @@ blockquote {
 }
 
 .content {
+    overflow: visible;
     p {
         padding: 10px 0;
+        font-size: 1rem;
     }
     img {
         vertical-align: middle;
+        max-width: 100%;
+    }
+    span{
+        font-size: 1rem;
+
     }
     ul {
         list-style-type: circle;
+        padding-left: 10px;
+        margin-left:10px;
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 767px) {
+    blockquote {
+        display: block;
+        padding: 0 1rem;
+        margin: 0 0 14px;
+        border-left: 8px solid #DDDFE4;
+        background: #EEF0F4;
+        overflow: auto;
+        overflow-scrolling: touch;
+        word-wrap: normal;
+        word-break: normal;
     }
 }

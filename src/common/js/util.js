@@ -1,4 +1,5 @@
 function getDate(time) {
+  time = time.replace(new RegExp(/-/gm), "/");　　 //将所有的'-'转为'/'即可
   let dt = new Date(time);
   let year = dt.getFullYear();
   let month = dt.getMonth() + 1;

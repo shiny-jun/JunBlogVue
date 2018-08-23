@@ -11,6 +11,10 @@ import 'highlight.js/styles/default.css';
 Vue.use(VueHighlightJS);
 import axios from 'axios';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+import Promise from 'es6-promise'
+Promise.polyfill()
+
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.use(ElementUI);

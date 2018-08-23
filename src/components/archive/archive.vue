@@ -21,16 +21,17 @@
                 <p class="article-detail">
                   {{article.bloginfo}}
                 </p>
-                <div class="article-info">
-                  {{article.createtime}}&nbsp;&nbsp;已读：{{article.readtime}}
-                </div>
+                <p class="article-info">
+                  <!-- {{article.createtime}}&nbsp;&nbsp;已读：{{article.readtime}} -->
+                  Posted by shiny-jun on {{ article.createtime }}
+                </p>
                 </router-link>
               </div>
           </div>
     </div>
 </template>
 <script>
-import {getDate} from "@/common/js/util.js";
+import { getDate } from "@/common/js/util.js";
 
 export default {
   data() {
@@ -46,20 +47,28 @@ export default {
     this.$axios
       .get("http://120.78.235.137/JunBlog-php/allArchivesList.php")
       .then(function(response) {
+        let len = response.data.length;
+        console.log(response.data);
+        for (let i = 0; i < len; i++) {
+          let len2 = response.data[i].archives.length;
+          for (let j = 0; j < len2; j++) {
+            let createtime = getDate(response.data[i].archives[j].createtime);
+            response.data[i].archives[j].createtime = createtime;
+          }
+        }
         _this.loading = false;
         _this.allArticles = response.data;
-        
       })
       .catch(function(response) {
         console.log(response);
       });
-    window.addEventListener("scroll", _this.handleScroll);//监听到顶部的距离
+    window.addEventListener("scroll", _this.handleScroll); //监听到顶部的距离
     // 判断是否带锚链接点击进来的
     if (this.$route.query.category_name) {
       let category_name = this.$route.query.category_name;
       // console.log(category_name)
       // document.querySelector('#anchor-'+category_name).scrollIntoView(true)
-      this.goAnchor('#anchor-'+category_name)
+      this.goAnchor("#anchor-" + category_name);
     }
   },
   methods: {
@@ -80,7 +89,7 @@ export default {
     goAnchor(selector) {
       var category = document.getElementById("category");
       console.log(selector);
-      console.log(this.$el)
+      console.log(this.$el);
       var anchor = this.$el.querySelector(selector);
       console.log(anchor);
       document.documentElement.scrollTop = anchor.offsetTop - 100;
@@ -109,10 +118,14 @@ export default {
 }
 .article-item {
   a {
-    .article-title, .article-detail{
+    .article-title,
+    .article-detail {
       padding-top: 30px;
       color: #000000;
     }
+    //   p{
+    //   font-size: 1rem;
+    // }
     color: #888888;
     &:hover {
       .article-title {
@@ -120,15 +133,17 @@ export default {
       }
       color: #e6a23c;
     }
-    .article-detail{
+    .article-detail {
       padding: 10px;
-      &::after{
-        content: '…'
+      &::after {
+        content: "…";
       }
     }
-    .article-info{
-      font-size: 13px;
+    .article-info {
       padding-bottom: 10px;
+    }
+    p {
+      // font-size: 1rem;
     }
   }
 }

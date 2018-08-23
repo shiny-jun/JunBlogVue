@@ -32,6 +32,7 @@ export default {
     footNav,headNav
   },
   created () {
+    document.body.addEventListener('touchstart',function(){})
   },
   methods:{
   },
@@ -47,8 +48,10 @@ export default {
 </script>
 
 <style lang="less">
-@import './common/css/jun_blog.less';
 @import './common/css/transition.less';
+@import './common/css/reset.css';
+@import './common/css/jun_blog.less';
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -56,6 +59,9 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
 }
 
 </style>

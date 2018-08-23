@@ -80,24 +80,39 @@ h3 {
   opacity: 1; /*其他，透明度50%*/
 }
 .archive {
-    color: #888888;
-    .article-title,.article-detail{
-      color: #000000;
-    }
-    &:hover{
-      .article-title,.article-detail{
-        color: #e6a23c;
-      }
+  color: #888888;
+  .article-title,
+  .article-detail {
+    color: #000000;
+  }
+  &:hover {
+    .article-title,
+    .article-detail {
       color: #e6a23c;
     }
-    .article-detail{
-      padding: 10px;
-      &::after{
-        content: '…'
-      }
+    color: #e6a23c;
+  }
+  .article-detail {
+    padding: 10px;
+    &::after {
+      content: "…";
     }
-    .post-meta{
+  }
+  .post-meta {
+    font-size: 13px;
+  }
+  p {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .archive {
+    p {
       font-size: 13px;
     }
+    .article-detail {
+      padding: 10px 0;
+    }
+  }
 }
 </style>
