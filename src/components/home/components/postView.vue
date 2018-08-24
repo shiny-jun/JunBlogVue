@@ -9,7 +9,7 @@
             </el-col>
             <el-col :xs="24" :sm="22">
               <router-link class="archive" :to = "{path:'/archiveDetail',name:'archiveDetail',params:{contentId:post.content_id}}">
-                <h3 class="article-title">{{ post.title }}</h3>
+                <h2 class="article-title">{{ post.title }}</h2>
                 <!-- <footer>{{ post.subtitle }}</footer> -->
                 <p class="article-detail">{{ post.bloginfo }}</p>
                 <p class="post-meta">
@@ -108,7 +108,7 @@ h3 {
 @media screen and (max-width: 767px) {
   .archive {
     p {
-      font-size: 13px;
+      font-size: 14px;
     }
     .article-detail {
       padding: 10px 0;

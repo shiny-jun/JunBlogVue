@@ -55,6 +55,9 @@ export default {
     border-top: solid 1px #d9d9d9;
     padding-top: 10px;
   }
+  .content {
+    margin: 20px;
+  }
 }
 
 @media screen and (max-width: 768px) {

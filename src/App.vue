@@ -32,7 +32,6 @@ export default {
     footNav,headNav
   },
   created () {
-    document.body.addEventListener('touchstart',function(){})
   },
   methods:{
   },

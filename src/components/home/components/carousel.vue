@@ -1,6 +1,6 @@
 <template>
     <div>
-      <el-carousel height="150px" indicator-position="outside">
+      <el-carousel height="180px" indicator-position="outside">
         <el-carousel-item v-for="(carousel,index) in carousels" :key="index" style="letter-spacing:-800px;">
           <a :href="carousel.normal" target="view_window">
             <img class="carousel-img" :src="carousel.min"/>

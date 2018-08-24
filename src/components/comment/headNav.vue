@@ -32,14 +32,6 @@ export default {
         this.showNavCss = 'researchNavCss';
       }
     },
-    // clickTouchend(){// 用于解决a标签添加:hover，在ios上需要点击2次才能跳转
-    //   let navList = this.$ref.navList.getElementsByTagName('a')
-    //   navList.addEventListener('click touchend',function(e){
-    //     var el = $(this);
-    //     var link = el.attr('href');
-    //     window.location = link;
-    //   })
-    // }
   }
 };
 </script>

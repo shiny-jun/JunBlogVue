@@ -137,7 +137,7 @@ export default {
       color: #e6a23c;
     }
     .article-detail {
-      padding: 10px;
+      // padding: 10px;
       &::after {
         content: "…";
       }
@@ -149,5 +149,8 @@ export default {
       // font-size: 1rem;
     }
   }
+}
+.el-tag{
+  margin-bottom: 10px;
 }
 </style>
