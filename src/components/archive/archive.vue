@@ -131,6 +131,9 @@ export default {
       .article-title {
         color: #e6a23c;
       }
+      .article-detail {
+        color: #e6a23c;
+      }
       color: #e6a23c;
     }
     .article-detail {

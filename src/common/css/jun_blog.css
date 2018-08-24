@@ -101,20 +101,15 @@ blockquote {
 }
 .content p {
   padding: 10px 0;
-  font-size: 1rem;
 }
 .content img {
   vertical-align: middle;
   max-width: 100%;
 }
-.content span {
-  font-size: 1rem;
-}
 .content ul {
   list-style-type: circle;
   padding-left: 10px;
   margin-left: 10px;
-  font-size: 1rem;
 }
 @media screen and (max-width: 767px) {
   blockquote {

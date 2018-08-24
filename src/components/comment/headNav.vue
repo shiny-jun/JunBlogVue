@@ -1,6 +1,6 @@
 <template>
     <div class="head-nav">
-      <nav :class="showNavCss">
+      <nav :class="showNavCss" ref = "navList">
         <ul>
           <h2 class="logo">SHiny-Jun</h2>
           <li class="mobile" @click="changeShowNav"><i class="el-icon-menu"></i></li>
@@ -31,7 +31,15 @@ export default {
       } else {
         this.showNavCss = 'researchNavCss';
       }
-    }
+    },
+    // clickTouchend(){// 用于解决a标签添加:hover，在ios上需要点击2次才能跳转
+    //   let navList = this.$ref.navList.getElementsByTagName('a')
+    //   navList.addEventListener('click touchend',function(e){
+    //     var el = $(this);
+    //     var link = el.attr('href');
+    //     window.location = link;
+    //   })
+    // }
   }
 };
 </script>

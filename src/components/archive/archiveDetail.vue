@@ -83,7 +83,7 @@ export default {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   .content {
-    margin: 20px;
+    // margin: 20px;
     overflow: auto;
     ul{
       list-style-type: circle;
