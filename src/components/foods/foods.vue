@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="foods">
+        <building/>
         <div class="row" v-for="(img,index) in images" :key="index">
             <div class="col-xs-12 col-md-6">
                 <a :href="img.img" class="thumbnail">
@@ -13,6 +14,8 @@
     </div>
 </template>
 <script>
+import building from '../loading/building'
+
 export default {
     data() {
         return{
@@ -24,10 +27,16 @@ export default {
                 text:'hair cut'
             }]
         }
+    },
+    components:{
+        building
     }
 }
 </script>
 <style lang="less" scoped>
+.foods{
+    position: relative;
+}
 .row{
     overflow: hidden;
 }

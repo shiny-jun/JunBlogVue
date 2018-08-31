@@ -50,6 +50,7 @@ export default {
 @import './common/css/transition.less';
 @import './common/css/reset.css';
 @import './common/css/jun_blog.less';
+@import './common/css/loading.less';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

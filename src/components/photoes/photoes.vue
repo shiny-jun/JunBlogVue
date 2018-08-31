@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="photoes">
+      <building/>
         <el-row :gutter="40">
         <el-col :xs="24" :sm="12" v-for="(img,index) in images" :key="index">
             <el-card :body-style="{ padding: '0px' }" shadow="hover">
@@ -17,6 +18,7 @@
     </div>
 </template>
 <script>
+import building from '../loading/building'
 export default {
   data() {
     return {
@@ -33,10 +35,16 @@ export default {
         }
       ]
     };
+  },
+  components:{
+    building
   }
 };
 </script>
 <style lang="less" scoped>
+.photoes{
+  position: relative;
+}
 .row {
   overflow: hidden;
 }
@@ -53,4 +61,5 @@ export default {
     margin-bottom: 10px;
   }
 }
+
 </style>
